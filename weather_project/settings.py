@@ -131,3 +131,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'weather_app',
 ]
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / '/Users/suneetha.porumamilla/Desktop/weather-dashboard.db',
+    }
+}

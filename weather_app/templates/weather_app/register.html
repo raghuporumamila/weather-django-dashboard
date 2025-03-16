@@ -1,0 +1,86 @@
+{% extends 'weather_app/base.html' %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+    <h2 class="text-2xl font-bold mb-6 text-center">Create an Account</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-4">
+            <label for="{{ user_form.username.id_for_label }}" class="block text-gray-700 font-medium mb-2">Username</label>
+            {{ user_form.username }}
+            {% if user_form.username.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ user_form.username.errors.0 }}</p>
+            {% endif %}
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+                <label for="{{ user_form.first_name.id_for_label }}" class="block text-gray-700 font-medium mb-2">First Name</label>
+                {{ user_form.first_name }}
+                {% if user_form.first_name.errors %}
+                    <p class="text-red-500 text-sm mt-1">{{ user_form.first_name.errors.0 }}</p>
+                {% endif %}
+            </div>
+            <div>
+                <label for="{{ user_form.last_name.id_for_label }}" class="block text-gray-700 font-medium mb-2">Last Name</label>
+                {{ user_form.last_name }}
+                {% if user_form.last_name.errors %}
+                    <p class="text-red-500 text-sm mt-1">{{ user_form.last_name.errors.0 }}</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <label for="{{ user_form.email.id_for_label }}" class="block text-gray-700 font-medium mb-2">Email</label>
+            {{ user_form.email }}
+            {% if user_form.email.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ user_form.email.errors.0 }}</p>
+            {% endif %}
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+                <label for="{{ profile_form.city.id_for_label }}" class="block text-gray-700 font-medium mb-2">City</label>
+                <input type="text" name="city" id="{{ profile_form.city.id_for_label }}" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                {% if profile_form.city.errors %}
+                    <p class="text-red-500 text-sm mt-1">{{ profile_form.city.errors.0 }}</p>
+                {% endif %}
+            </div>
+            <div>
+                <label for="{{ profile_form.country.id_for_label }}" class="block text-gray-700 font-medium mb-2">Country</label>
+                <input type="text" name="country" id="{{ profile_form.country.id_for_label }}" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                {% if profile_form.country.errors %}
+                    <p class="text-red-500 text-sm mt-1">{{ profile_form.country.errors.0 }}</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <label for="{{ user_form.password1.id_for_label }}" class="block text-gray-700 font-medium mb-2">Password</label>
+            {{ user_form.password1 }}
+            {% if user_form.password1.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ user_form.password1.errors.0 }}</p>
+            {% endif %}
+            <p class="text-gray-500 text-xs mt-1">Password must be at least 8 characters and cannot be entirely numeric.</p>
+        </div>
+        
+        <div class="mb-6">
+            <label for="{{ user_form.password2.id_for_label }}" class="block text-gray-700 font-medium mb-2">Confirm Password</label>
+            {{ user_form.password2 }}
+            {% if user_form.password2.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ user_form.password2.errors.0 }}</p>
+            {% endif %}
+        </div>
+        
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+            Register
+        </button>
+    </form>
+    
+    <div class="mt-4 text-center">
+        <p class="text-gray-600">Already have an account? <a href="#" class="text-blue-500 hover:underline">Log in</a></p>
+    </div>
+</div>
+{% endblock %}
